@@ -13,10 +13,9 @@
         <module>springmvc-02</module>
         <module>springmvc-03</module>
         <module>springmvc-04</module>
-        <module>spring-springmvc-mybatis</module>
         <module>springmvc-05</module>
         <module>springmvc-06</module>
-        <module>springmvc-07</module>
+		<module>spring-springmvc-mybatis</module>
     </modules>
 
     <properties>
