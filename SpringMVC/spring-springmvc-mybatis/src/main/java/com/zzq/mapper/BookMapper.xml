@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzq.mapper.BookMapper">
+
+    <insert id="addBook" parameterType="Books">
+        INSERT INTO books (`book_name`, `book_counts`, `book_detail`)
+        VALUES (#{bookName}, #{bookCounts}, #{bookDetail})
+    </insert>
+
+    <delete id="deleteBookById">
+        DELETE
+        FROM books
+        WHERE `book_id` = #{id}
+    </delete>
+
+    <update id="updateBook" parameterType="Books">
+        UPDATE books
+        <set>
+            <if test="bookName!=null">
+                `book_name` = #{bookName},
+            </if>
+            <if test="bookCounts!=null">
+                `book_counts` = #{bookCounts},
+            </if>
+            <if test="bookDetail!=null">
+                `book_detail` = #{bookDetail}
+            </if>
+        </set>
+        WHERE `book_id` = #{bookId}
+    </update>
+
+    <select id="queryBookById" resultType="Books">
+        SELECT *
+        FROM books
+        WHERE `book_id` = #{id}
+    </select>
+
+    <select id="queryAllBook" resultType="Books">
+        SELECT *
+        FROM books
+    </select>
+    
+    <select id="queryBookByName" resultType="Books">
+        SELECT * FROM books WHERE `book_name` LIKE "%"#{bookName}"%"
+    </select>
+
+</mapper>
